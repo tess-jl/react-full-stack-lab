@@ -2,15 +2,6 @@
   "name": "react-full-stack-lab",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tess-jl/react-full-stack-lab.git"
-=======
   "main": "src/index.js",
   "jest": {
     "setupFilesAfterEnv": [
@@ -29,17 +20,10 @@
     "test:watch": "npm run test -- --watch",
     "start": "webpack-dev-server --hot --mode development --devtool eval-source-map",
     "build": "webpack -p --devtool source-map"
->>>>>>> 176f42599f9677d5542ea78f0b3f60a98ed09ed8
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-  "bugs": {
-    "url": "https://github.com/tess-jl/react-full-stack-lab/issues"
-  },
-  "homepage": "https://github.com/tess-jl/react-full-stack-lab#readme"
-=======
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -79,5 +63,4 @@
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.3"
   }
->>>>>>> 176f42599f9677d5542ea78f0b3f60a98ed09ed8
 }
