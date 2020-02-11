@@ -10,8 +10,10 @@ export default function Home() {
   return (
     <main className={ styles.Home }>
       <Header />
-      <PiList />
-      <DataSessionDetails />
+      <section className={ styles.Main }>
+        <PiList />
+        <DataSessionDetails />
+      </section>
       <Footer />
     </main>
   );

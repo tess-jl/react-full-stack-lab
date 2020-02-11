@@ -1,9 +1,8 @@
-
-
 .App{
   display: flex;
   flex-direction: column;
 }
+
 main, header, footer {
   margin: 0 auto;
 }
