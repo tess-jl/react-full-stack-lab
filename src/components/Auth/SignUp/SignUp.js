@@ -6,7 +6,7 @@ const SignUp = () => {
   const { email, password, piNickname, handleChange, handleSubmit } = useAuth();
 
   return (
-    <>
+    <main>
       <p>Sign Up</p>
       <form onSubmit={handleSubmit}>
         <input type="text" name="email" value={email} placeholder="Enter your email" onChange={handleChange}></input>
@@ -18,7 +18,7 @@ const SignUp = () => {
           <button>Login</button>
         </Link>
       </form>
-    </>
+    </main>
   );
 };
 
