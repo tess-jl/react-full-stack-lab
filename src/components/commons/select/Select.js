@@ -1,20 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Option from './Option';
-import piList from '../../../assets/piList.js';
+import styles from './Select.css';
 
-const Select = ({ onChange }) => {
+const Select = ({ onChange, piList }) => {
   const Options = piList.map((option) => {
     return <Option key={ option.value } value={ option.value } name={ option.name } />;
   });
 
   return (
-    <select onChange={ onChange }>{ Options }</select>
+    <select className={ styles.Select } onChange={ onChange }>{ Options }</select>
   );
 };
 
 Select.propTypes = {
   select: PropTypes.array,
+  piList: PropTypes.array,
   onChange: PropTypes.func.isRequired
 };
 

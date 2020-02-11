@@ -1,6 +1,5 @@
 import React from 'react';
-
+import PiList from './Home/PiList/PiList';
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (<PiList />);
 }
-  
