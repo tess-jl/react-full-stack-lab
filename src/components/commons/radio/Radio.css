@@ -1,0 +1,21 @@
+.RadioItem {
+  label {
+    padding: 0.1rem;
+
+    &:hover {
+      background-color: rgba(0, 0, 255, 0.8);
+      color: white;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  input:checked + label {
+    background-color: midnightblue;
+    color: white;
+
+    transition: ease;
+  }
+}
