@@ -1,5 +1,15 @@
 import React from 'react';
-import PiList from './Home/PiList/PiList';
+import Header from './Header/Header';
+import SignUp from '../components/Auth/SignUp/SignUp';
+import Footer from './Footer/Footer.js';
+
 export default function App() {
-  return (<PiList />);
+
+  return (
+    <>
+      <Header />
+      <SignUp />
+      <Footer />
+    </>
+  );
 }
