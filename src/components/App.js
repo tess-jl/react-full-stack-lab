@@ -1,7 +1,8 @@
 import React from 'react';
-import { 
-  BrowserRouter as Router, 
-  Route 
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
 } from 'react-router-dom';
 import Header from './Header/Header';
 import SignUp from '../components/Auth/SignUp/SignUp';
@@ -19,7 +20,7 @@ export default function App() {
         <Switch>
           <Route path='/' component={Home} />
           <Route exact path='/signup' component={SignUp} />
-          <Route path='/login'component={Login} />
+          <Route path='/login' component={Login} />
         </Switch>
       </Router>
       <Footer />
