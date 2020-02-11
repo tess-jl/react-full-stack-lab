@@ -32,6 +32,7 @@ const Details = () => {
             i++;
             accDataPoints.push(pointBySensor);
           }
+          return accDataPoints;
         }, []);
       });
   };
