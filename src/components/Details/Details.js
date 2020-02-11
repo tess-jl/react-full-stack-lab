@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import * as d3 from 'd3';
+import { line } from 'd3';
+
 
 const Details = () => {
 
@@ -48,5 +51,12 @@ const Details = () => {
       {dataListItems}
     </ul>
   );
+
+
+  //   const line = d3.line()
+  //   line
+  //     .x(dataPoints.map(...dataArrayObject => dataArrayObject.date))
+  //     .y(dataPoints.map(...dataArrayObject => dataArrayObject.value));
+
 };
 export default Details;
