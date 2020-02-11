@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Header.css'
+import styles from './Header.css';
 
 const Header = () => {
   return (
@@ -8,7 +8,7 @@ const Header = () => {
         <h1>Pi Party with Plants</h1>
       </header>
     </>
-  )
-}
+  );
+};
 
 export default Header;
