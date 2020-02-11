@@ -20,9 +20,15 @@ export const useAuth = () => {
     event.preventDefault();
     fetchSignUpUser(email, password, piNickname)
       .then(res => {
+        //if
+        //history .push somewhere else 
+
+        //err.message
         console.log(res);
       })
-      .catch();
+      .catch(err => {
+        console.log(err.message)
+      });
   };
 
   return { email, password, piNickname, handleChange, handleSubmit };
