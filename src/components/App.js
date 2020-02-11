@@ -9,12 +9,12 @@ import styles from './App.css';
 export default function App() {
 
   return (
-    <div className={ styles.App }>
+    <div className={styles.App}>
       <Header />
       <Router>
         <Switch>
-          <Route path='/home' component={ Home } />
-          <Route exact path='/' component={ SignUp } />
+          <Route path='/home' component={Home} />
+          <Route exact path='/' component={SignUp} />
         </Switch>
       </Router>
       <Footer />

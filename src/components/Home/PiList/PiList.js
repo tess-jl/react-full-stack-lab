@@ -30,9 +30,9 @@ export default function PiList() {
   };
 
   return (
-    <aside className={ styles.PiList }>
-      <SelectList name="pis" piList={ piList } onChange={ handleChange } />
-      <RadioList radioButtons={ radios } name="sessions" onChange={ handleChange } />
+    <aside className={styles.PiList}>
+      <SelectList name="pis" piList={piList} onChange={handleChange} />
+      <RadioList radioButtons={radios} name="sessions" onChange={handleChange} />
     </aside>
   );
 }

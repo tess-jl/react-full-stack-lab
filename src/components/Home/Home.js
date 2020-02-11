@@ -8,13 +8,9 @@ import styles from './Home.css';
 export default function Home() {
 
   return (
-    <main className={ styles.Home }>
-      <Header />
-      <section className={ styles.Main }>
-        <PiList />
-        <DataSessionDetails />
-      </section>
-      <Footer />
+    <main className={styles.Home}>
+      <PiList />
+      <DataSessionDetails />
     </main>
   );
 }
