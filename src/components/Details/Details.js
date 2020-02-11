@@ -12,7 +12,7 @@ const Details = () => {
     const dataSessionId = useParams('dataSessionId');
     getDataPoints(dataSessionId)
       .then(currentPoints => {
-        setDataPoints(...currentPoints);
+        setDataPoints(currentPoints);
       });
   }, [dataPoints]);
 
