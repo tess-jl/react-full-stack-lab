@@ -20,19 +20,19 @@ const Details = () => {
     fetch(`/api/v1/pi-data-points/${dataSessionId}`)
       .then(resArrayOfData => {
         let i = 0;
-        return resArrayOfData.map(dataPoint => {
-          const sensors = Object.keys(dataPoint.data);
+        return resArrayOfData.reduce((accDataPoints, currDataPoint) => {
+          const sensors = Object.keys(currDataPoint.data);
           while(i < sensors.length){
             const pointBySensor = {
               sensor: sensors[i],
-              value : dataPoint.data[sensors[i]].averageValue,
-              STD: dataPoint.data[sensors[i]].standardDeviation,
-              date: dataPoint.piTimestamp
+              value : currDataPoint.data[sensors[i]].averageValue,
+              STD: currDataPoint.data[sensors[i]].standardDeviation,
+              date: currDataPoint.piTimestamp
             };
             i++;
-            return pointBySensor;
+            accDataPoints.push(pointBySensor);
           }
-        });
+        }, []);
       });
   };
 
