@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchSignUpUser } from '../services/fetchUser';
 
-export const useSignUp = () => {
+export const useAuth = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [piNickname, setPiNickname] = useState('');
