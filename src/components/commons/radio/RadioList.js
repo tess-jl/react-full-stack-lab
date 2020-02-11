@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RadioButton from './RadioButton';
+import RadioItem from './RadioItem';
 
-const RadioButtons = ({ radioButtons, name, onChange }) => {
+const RadioList = ({ radioButtons, name, onChange }) => {
   const radioButtonElements = radioButtons.map(({ label, value }) => (
-    <RadioButton key={value} label={label} value={value} name={name} onChange={onChange} />
+    <RadioItem key={value} label={label} value={value} name={name} onChange={onChange} />
   ));
   
   return (
@@ -14,7 +14,7 @@ const RadioButtons = ({ radioButtons, name, onChange }) => {
   );
 };
 
-RadioButtons.propTypes = {
+RadioList.propTypes = {
   radioButtons: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired
@@ -23,4 +23,4 @@ RadioButtons.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-export default RadioButtons;
+export default RadioList;

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Option = ({ value, name }) => {
+const SelectItem = ({ value, name }) => {
   return (
     <option value={ value }>{ name }</option>
   );
 };
 
-Option.propTypes = {
+SelectItem.propTypes = {
   value: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 };
 
-export default Option;
+export default SelectItem;

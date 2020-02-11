@@ -8,7 +8,7 @@ export const fetchSignUpUser = (email, password, piNickname) => {
     }]
   };
 
-  return fetch('https://localhost:7890/api/v1/auth/signup', {
+  return fetch('http://localhost:7890/api/v1/auth/signup', {
     method: 'POST', 
     mode: 'cors',
     headers: {

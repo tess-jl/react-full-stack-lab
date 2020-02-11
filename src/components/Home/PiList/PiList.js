@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Select from '../../commons/select/Select';
-import RadioButtons from '../../commons/radio/RadioButtons';
+import SelectList from '../../commons/select/SelectList';
+import RadioList from '../../commons/radio/RadioList';
 
 
 export default function PiList() {
@@ -31,8 +31,8 @@ export default function PiList() {
 
   return (
     <>
-      <Select name="pis" piList={ piList } onChange={ handleChange } />
-      <RadioButtons radioButtons={ radios } name="sessions" onChange={ handleChange } />
+      <SelectList name="pis" piList={ piList } onChange={ handleChange } />
+      <RadioList radioButtons={ radios } name="sessions" onChange={ handleChange } />
     </>
   );
 }
