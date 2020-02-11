@@ -1,6 +1,11 @@
+.RadioList{
+  background-color: darkgray;
+  margin: 0 auto;
+}
+
 .RadioItem {
   label {
-    padding: 0.1rem;
+    padding: 0.1rem 0.4rem;
 
     &:hover {
       background-color: rgba(0, 0, 255, 0.8);
@@ -15,7 +20,6 @@
   input:checked + label {
     background-color: midnightblue;
     color: white;
-
     transition: ease;
   }
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-
+import styles from './DataSessionDetails.css';
 export default function DataSessionDetails() {
   return (
-    <>
+    <section className={styles.DataSessionDetails}>
       <h2>Session Details</h2>
       <div>
         <p>Pi Nickname: {'Placeholder Pi'}</p>
@@ -12,6 +12,6 @@ export default function DataSessionDetails() {
         <p>Number of Data Points: {'Placeholder * pi'}</p>
         <button>Data Details for this session</button>
       </div>
-    </>
+    </section>
   );
 }
