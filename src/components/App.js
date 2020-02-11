@@ -1,6 +1,15 @@
 import React from 'react';
+import Header from './Header/Header';
+import SignUp from '../components/Auth/SignUp/SignUp';
+import Footer from './Footer/Footer.js';
 
 export default function App() {
-  return <h1>Hello World</h1>;
+
+  return (
+    <>
+      <Header />
+      <SignUp />
+      <Footer />
+    </>
+  );
 }
-  
