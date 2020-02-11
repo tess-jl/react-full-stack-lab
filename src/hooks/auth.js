@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { postSignUp } from '../services/authApi';
+import { postSignUp, postLogin } from '../services/authApi';
 
 export const useAuth = () => {
   const [email, setEmail] = useState('');
@@ -16,24 +16,37 @@ export const useAuth = () => {
     inputFactoryMethod[target.name](target.value);
   };
 
-  const data = {
+  const signUpData = {
     email: email,
     password: password,
-    role: 'user',
     myPis: [{
       piNickname: piNickname
     }]
   };
 
-  const handleSubmit = () => {
+  const loginData = {
+    email: email,
+    password: password
+  };
+
+  const handleSignUpSubmit = () => {
     event.preventDefault();
-    postSignUp({ data })
+    postSignUp(signUpData)
       .then(res => {
         console.log(res);
       })
       .catch();
   };
 
-  return { email, password, piNickname, handleChange, handleSubmit };
+  const handleLoginSubmit = () => {
+    event.preventDefault();
+    postLogin(loginData)
+      .then(res => {
+        console.log(res);
+      })
+      .catch();
+  };
+
+  return { email, password, piNickname, handleChange, handleSignUpSubmit, handleLoginSubmit };
 };
 
