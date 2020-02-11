@@ -13,7 +13,7 @@ const Login = () => {
         <input type="text" name="password" value={password} placeholder="Enter a password" onChange={handleChange}></input>
       
         <button>Login</button>
-        <Link to={'/'}>
+        <Link to={'/signup'}>
           <button>Create Account</button>
         </Link>
       </form>
