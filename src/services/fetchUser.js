@@ -8,13 +8,13 @@ export const fetchSignUpUser = (email, password, piNickname) => {
     }]
   };
 
-  return fetch('http://plantonomous.herokuapp.com/api/v1/auth/signup', {
+  return fetch('https://localhost:7890/api/v1/auth/signup', {
     method: 'POST', 
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data) 
+    body: JSON.stringify(data)
   })
     .then(res => {
       if(res.ok) return res.json();

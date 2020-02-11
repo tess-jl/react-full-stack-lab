@@ -32,9 +32,7 @@ export default function PiList() {
   return (
     <>
       <Select name="pis" piList={ piList } onChange={ handleChange } />
-      <RadioButtons radioButtons={ radios } name="sessions" onChange={ handleChange }>
-
-      </RadioButtons>
+      <RadioButtons radioButtons={ radios } name="sessions" onChange={ handleChange } />
     </>
   );
 }
