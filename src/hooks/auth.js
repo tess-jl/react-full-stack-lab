@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchSignUpUser } from '../services/fetchUser';
+import { postSignUp } from '../services/authApi';
 
 export const useAuth = () => {
   const [email, setEmail] = useState('');
@@ -16,9 +16,18 @@ export const useAuth = () => {
     inputFactoryMethod[target.name](target.value);
   };
 
+  const data = {
+    email: email,
+    password: password,
+    role: 'user',
+    myPis: [{
+      piNickname: piNickname
+    }]
+  };
+
   const handleSubmit = () => {
     event.preventDefault();
-    fetchSignUpUser(email, password, piNickname)
+    postSignUp({ data })
       .then(res => {
         console.log(res);
       })

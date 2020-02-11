@@ -7,7 +7,7 @@ const request = (path, method, body) => {
     credentials: 'include', 
     body: JSON.stringify(body)
   })
-    .then(res => Promise.all([res.ok, res.jscn()]))
+    .then(res => Promise.all([res.ok, res.json()]))
     .then(([ok, json]) => {
       if(!ok) throw json; 
       return json;
