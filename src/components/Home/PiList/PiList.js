@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SelectList from '../../commons/select/SelectList';
 import RadioList from '../../commons/radio/RadioList';
-
+import styles from './PiList.css';
 
 export default function PiList() {
 
@@ -30,9 +30,9 @@ export default function PiList() {
   };
 
   return (
-    <>
-      <SelectList name="pis" piList={ piList } onChange={ handleChange } />
-      <RadioList radioButtons={ radios } name="sessions" onChange={ handleChange } />
-    </>
+    <aside className={styles.PiList}>
+      <SelectList name="pis" piList={piList} onChange={handleChange} />
+      <RadioList radioButtons={radios} name="sessions" onChange={handleChange} />
+    </aside>
   );
 }
