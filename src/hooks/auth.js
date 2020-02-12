@@ -1,36 +1,70 @@
-import { useEffect, useState } from 'react';
-import { fetchSignUpUser } from '../services/fetchUser';
+import React, { useEffect, useState, useContext, createContext } from 'react';
+import { postLogin, postSignUp } from '../services/authApi';
+import { useHistory } from 'react-router-dom';
 
-export const useAuth = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [piNickname, setPiNickname] = useState('');
+const SessionContext = createContext();
+
+export const SessionProvider = ({ children }) => {
   
-  const inputFactoryMethod = {
-    email: setEmail,
-    password: setPassword,
-    piNickname: setPiNickname
-  };
+  const [authError, setAuthError] = useState();
+  const [user, setUser] = useState();
 
-  const handleChange = ({ target }) => {
-    inputFactoryMethod[target.name](target.value);
-  };
+  const history = useHistory();
 
-  const handleSubmit = () => {
-    event.preventDefault();
-    fetchSignUpUser(email, password, piNickname)
-      .then(res => {
-        //if
-        //history .push somewhere else 
-
-        //err.message
-        console.log(res);
+  const login = loginData => {
+    setAuthError(null);
+    return postLogin(loginData)
+      .then(user => {
+        setUser(user);
+        console.log('login response', user);
+        history.push('/');
       })
       .catch(err => {
-        console.log(err.message)
+        setAuthError(err.message);
       });
   };
 
-  return { email, password, piNickname, handleChange, handleSubmit };
+  const signUp = signUpData => {
+    setAuthError(null);
+    return postSignUp(signUpData)
+      .then(user => {
+        setUser(user);
+        console.log('signup response', user);
+        history.push('/');
+      })
+      .catch(err => {
+        setAuthError(err.message);
+      });
+  };
+
+  return (
+    <SessionContext.Provider value={{ user, login, signUp, authError }}>
+      {children}
+    </SessionContext.Provider>
+  );
 };
 
+export const useSessionUser = () => {
+  const user = useContext(SessionContext);
+  return user;
+};
+
+export const useHasSession = () => {
+  const user = useSessionUser();
+  return !!user;
+};
+
+export const useLogin = () => {
+  const { login, authError } = useContext(SessionContext);
+  return { login, authError };
+};
+
+export const useSignUp = () => {
+  const { signUp, authError } = useContext(SessionContext);
+  return { signUp, authError };
+};
+
+export const useAuthError = () => {
+  const { authError } = useContext(SessionContext);
+  return authError;
+};
