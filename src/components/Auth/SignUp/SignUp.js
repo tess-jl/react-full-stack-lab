@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSignUp } from '../../../hooks/auth';
+import { useSignUp, useAuthError } from '../../../hooks/auth';
 
 const SignUp = () => {
 
   const { signUp, authError } = useSignUp();
+  const { setAuthError } = useAuthError();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,7 +46,7 @@ const SignUp = () => {
         
         <button>Create Account</button>
         <Link to={'/login'}>
-          <button>Login</button>
+          <button onClick={() => setAuthError(null)}>Login</button>
         </Link>
       </form>
     </main>

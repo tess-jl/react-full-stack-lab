@@ -52,7 +52,7 @@ export const SessionProvider = ({ children }) => {
   };
 
   return (
-    <SessionContext.Provider value={{ user, login, signUp, authError }}>
+    <SessionContext.Provider value={{ user, login, signUp, authError, setAuthError }}>
       {children}
     </SessionContext.Provider>
   );
@@ -79,6 +79,6 @@ export const useSignUp = () => {
 };
 
 export const useAuthError = () => {
-  const { authError } = useContext(SessionContext);
-  return authError;
+  const { authError, setAuthError } = useContext(SessionContext);
+  return { authError, setAuthError };
 };
