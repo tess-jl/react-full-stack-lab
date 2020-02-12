@@ -1,15 +1,29 @@
-import React, { useEffect, useState, useContext, createContext } from 'react';
-import { postLogin, postSignUp } from '../services/authApi';
+import React, { 
+  useEffect, 
+  useState, 
+  useContext, 
+  createContext } from 'react';
+import { postLogin, 
+  postSignUp, 
+  getVerifyAuth } from '../services/authApi';
 import { useHistory } from 'react-router-dom';
 
 const SessionContext = createContext();
 
 export const SessionProvider = ({ children }) => {
-  
   const [authError, setAuthError] = useState();
   const [user, setUser] = useState();
 
   const history = useHistory();
+
+  useEffect(() => {
+    getVerifyAuth()
+      .then(user => {
+        setUser(user);
+        history.push('/');
+      })
+      .catch(() => history.push('/login'));
+  }, []);
 
   const login = loginData => {
     setAuthError(null);
@@ -38,7 +52,7 @@ export const SessionProvider = ({ children }) => {
   };
 
   return (
-    <SessionContext.Provider value={{ user, login, signUp, authError }}>
+    <SessionContext.Provider value={{ user, login, signUp, authError, setAuthError }}>
       {children}
     </SessionContext.Provider>
   );
@@ -65,6 +79,6 @@ export const useSignUp = () => {
 };
 
 export const useAuthError = () => {
-  const { authError } = useContext(SessionContext);
-  return authError;
+  const { authError, setAuthError } = useContext(SessionContext);
+  return { authError, setAuthError };
 };

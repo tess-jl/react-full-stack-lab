@@ -1,5 +1,7 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, 
+  Route, 
+  BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './Header/Header';
 import SignUp from '../components/Auth/SignUp/SignUp';
