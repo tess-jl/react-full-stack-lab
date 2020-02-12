@@ -1,6 +1,7 @@
 import { get, post, path, del } from './request.js';
 
 export const postSignUp = user => post('/auth/signup', user);
+export const postLogin = user => post('/auth/login', user);
 
 
 // export const fetchSignUpUser = (email, password, piNickname) => {
