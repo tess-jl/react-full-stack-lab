@@ -12,13 +12,14 @@ const SessionContext = createContext();
 
 export const SessionProvider = ({ children }) => {
   const [authError, setAuthError] = useState();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   const history = useHistory();
 
   useEffect(() => {
     getVerifyAuth()
       .then(user => {
+        
         setUser(user);
         history.push('/');
       })
@@ -59,7 +60,7 @@ export const SessionProvider = ({ children }) => {
 };
 
 export const useSessionUser = () => {
-  const user = useContext(SessionContext);
+  const { user } = useContext(SessionContext);
   return user;
 };
 

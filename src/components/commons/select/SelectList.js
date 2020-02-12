@@ -4,12 +4,15 @@ import SelectItem from './SelectItem';
 import styles from './Select.css';
 
 const SelectList = ({ onChange, piList }) => {
-  const Options = piList.map((option) => {
-    return <SelectItem key={ option.value } value={ option.value } name={ option.name } />;
+  const options = piList.map(pi => {
+    console.log(pi);
+    return <SelectItem key={pi._id} value={pi.piNickname} name={pi.piNickname} />;
   });
 
   return (
-    <select className={ styles.SelectList } onChange={ onChange }>{ Options }</select>
+    <select className={styles.SelectList} onChange={onChange}>
+      {options}
+    </select>
   );
 };
 
