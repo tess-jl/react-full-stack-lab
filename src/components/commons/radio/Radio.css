@@ -1,15 +1,17 @@
 .RadioList{
-  background-color: darkgray;
+  background-color: #FFEBC2;
   margin: 0 auto;
+  border: 1px solid #416BB3;
 }
 
 .RadioItem {
   label {
     padding: 0.1rem 0.4rem;
-
+    background-color:#416BB3;
+    color:#A8C8FF;
     &:hover {
-      background-color: rgba(0, 0, 255, 0.8);
-      color: white;
+      background-color: #FFE173;
+      color:black;
     }
   }
 

@@ -10,3 +10,10 @@ main, header, footer {
 footer {
   padding: 1rem 0;
 }
+
+a{
+  color:#B3993E;
+  &:active{
+    color:#FFE173}
+
+}

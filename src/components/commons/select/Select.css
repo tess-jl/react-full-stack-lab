@@ -1,4 +1,6 @@
 .SelectList {
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.5rem;
   min-width: 5rem;
+  background: #416BB3;
+  color: #FFEBC2;
   }
