@@ -1,52 +1,70 @@
-import { useEffect, useState } from 'react';
-import { postSignUp, postLogin } from '../services/authApi';
+import React, { useEffect, useState, useContext, createContext } from 'react';
+import { postLogin, postSignUp } from '../services/authApi';
+import { useHistory } from 'react-router-dom';
 
-export const useAuth = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [piNickname, setPiNickname] = useState('');
+const SessionContext = createContext();
+
+export const SessionProvider = ({ children }) => {
   
-  const inputFactoryMethod = {
-    email: setEmail,
-    password: setPassword,
-    piNickname: setPiNickname
-  };
+  const [authError, setAuthError] = useState();
+  const [user, setUser] = useState();
 
-  const handleChange = ({ target }) => {
-    inputFactoryMethod[target.name](target.value);
-  };
+  const history = useHistory();
 
-  const signUpData = {
-    email: email,
-    password: password,
-    myPis: [{
-      piNickname: piNickname
-    }]
-  };
-
-  const loginData = {
-    email: email,
-    password: password
-  };
-
-  const handleSignUpSubmit = () => {
-    event.preventDefault();
-    postSignUp(signUpData)
-      .then(res => {
-        console.log(res);
+  const login = loginData => {
+    setAuthError(null);
+    return postLogin(loginData)
+      .then(user => {
+        setUser(user);
+        console.log('login response', user);
+        history.push('/');
       })
-      .catch();
+      .catch(err => {
+        setAuthError(err.message);
+      });
   };
 
-  const handleLoginSubmit = () => {
-    event.preventDefault();
-    postLogin(loginData)
-      .then(res => {
-        console.log(res);
+  const signUp = signUpData => {
+    setAuthError(null);
+    return postSignUp(signUpData)
+      .then(user => {
+        setUser(user);
+        console.log('signup response', user);
+        history.push('/');
       })
-      .catch();
+      .catch(err => {
+        setAuthError(err.message);
+      });
   };
 
-  return { email, password, piNickname, handleChange, handleSignUpSubmit, handleLoginSubmit };
+  return (
+    <SessionContext.Provider value={{ user, login, signUp, authError }}>
+      {children}
+    </SessionContext.Provider>
+  );
 };
 
+export const useSessionUser = () => {
+  const user = useContext(SessionContext);
+  return user;
+};
+
+export const useHasSession = () => {
+  const user = useSessionUser();
+  return !!user;
+};
+
+export const useLogin = () => {
+  const { login, authError } = useContext(SessionContext);
+  return { login, authError };
+};
+
+export const useSignUp = () => {
+  const { signUp, authError } = useContext(SessionContext);
+  return { signUp, authError };
+};
+
+export const useAuthError = () => {
+  const { authError } = useContext(SessionContext);
+  return authError;
+};
