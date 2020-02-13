@@ -6,12 +6,17 @@ import styles from './Home.css';
 
 export default function Home() {
   
-  const [sessionDetail, setSessionDetail] = useState();
+  const [selectedSession, setSelectedSession] = useState();
+
+  const handleSessionSelect = (({ target }) => {
+    console.log(target.value);
+    setSelectedSession(target.value);
+  });
   
   return (
     <main className={styles.Home}>
-      <PiList />
-      <DataSessionDetails />
+      <PiList handleSessionSelect={handleSessionSelect} />
+      <DataSessionDetails selectedSession={selectedSession}/>
     </main>
   );
 }

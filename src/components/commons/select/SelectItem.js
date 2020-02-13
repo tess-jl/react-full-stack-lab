@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SelectItem = ({ value, name }) => {
   return (
-    <option value={ value }>{ name }</option>
+    <option value={value}>{name}</option>
   );
 };
 

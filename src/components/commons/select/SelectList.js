@@ -5,7 +5,6 @@ import styles from './Select.css';
 
 const SelectList = ({ onChange, piList }) => {
   const options = piList.map(pi => {
-    console.log(pi);
     return <SelectItem key={pi._id} value={pi.piNickname} name={pi.piNickname} />;
   });
 

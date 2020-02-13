@@ -12,7 +12,7 @@ const SessionContext = createContext();
 
 export const SessionProvider = ({ children }) => {
   const [authError, setAuthError] = useState();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   const history = useHistory();
 

@@ -4,42 +4,53 @@ import RadioList from '../../commons/radio/RadioList';
 import styles from './PiList.css';
 import PropTypes from 'prop-types';
 import { useSessionUser } from '../../../hooks/auth.js';
+import { get } from '../../../services/request.js';
 
-export default function PiList() {
+export default function PiList({ handleSessionSelect }) {
   const user = useSessionUser();
-  const [select, setSelect] = useState([]);
-  const [radio, setRadio] = useState('pi2');
 
   if(!user){
     return <h1>Loading</h1>;
   } 
 
+  const [selectedPi, setSelectedPi] = useState(user.myPis[0]);
+  // const [radio, setRadio] = useState('pi2');
+  const [sessions, setSessions] = useState([]);
 
-  const inputFactoryMethod = {
-    select: setSelect,
-    radio: setRadio
+  
+  useEffect(() => {
+    fetchSessions();
+  }, [selectedPi]);
+
+  const fetchSessions = () => {
+    get(`/user-aggregations/nickname/${selectedPi.piNickname}&${user._id}`)
+      .then(sessions => {
+        console.log('fetched sessions', sessions);
+        setSessions(sessions);
+      });
   };
 
-  const radios = [
-    { label: 'Session 1', value: 'session1' },
-    { label: 'Session 2', value: 'session2' },
-    { label: 'Session 3', value: 'session3' }
-  ];
+  //fetchSessions();
 
-  // const piList = [
-  //   { name: 'Pi 1', value: 'pi1' },
-  //   { name: 'Pi 2', value: 'pi2' },
-  //   { name: 'Pi 3', value: 'pi3' }
+  const inputFactoryMethod = {
+    select: setSelectedPi,
+    radio: setSessions
+  };
+
+  // const radios = [
+  //   { label: 'Session 1', value: 'session1' },
+  //   { label: 'Session 2', value: 'session2' },
+  //   { label: 'Session 3', value: 'session3' }
   // ];
 
-  const handleChange = ({ target }) => {
+  const handlePiChange = ({ target }) => {
     inputFactoryMethod[target.name](target.value);
   };
 
   return (
     <aside className={styles.PiList}>
-      <SelectList name="pis" piList={user.myPis} onChange={handleChange} />
-      <RadioList radioButtons={radios} name="sessions" onChange={handleChange} />
+      <SelectList name="select" piList={user.myPis} onChange={handlePiChange} />
+      <RadioList sessions={sessions} name="radio" onChange={handleSessionSelect} />
     </aside>
   );
 }

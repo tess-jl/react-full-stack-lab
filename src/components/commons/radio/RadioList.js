@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RadioItem from './RadioItem';
 
-const RadioList = ({ radioButtons, name, onChange }) => {
-  const radioButtonElements = radioButtons.map(({ label, value }) => (
-    <RadioItem key={value} label={label} value={value} name={name} onChange={onChange} />
+const RadioList = ({ sessions, name, onChange }) => {
+  const radioButtonElements = sessions.map((session, i) => (
+    <RadioItem key={session._id} label={`session ${i + 1}` } value={session._id} name={name} onChange={onChange} />
   ));
   
   return (

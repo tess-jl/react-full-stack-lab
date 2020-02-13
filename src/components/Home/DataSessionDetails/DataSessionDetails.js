@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DataSessionDetails() {
+export default function DataSessionDetails(selectedSession) {
   return (
     <>
       <h2>Session Details</h2>
