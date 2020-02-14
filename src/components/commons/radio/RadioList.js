@@ -15,9 +15,14 @@ const RadioList = ({ sessions, name, onChange }) => {
 };
 
 RadioList.propTypes = {
-  radioButtons: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired
+  sessions: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    piNicknameId: PropTypes.string.isRequired,
+    sensorType: PropTypes.array.isRequired,
+    piLocationInHouse: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    notes: PropTypes.string,
+    __v: PropTypes.number.isRequired
   })).isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired

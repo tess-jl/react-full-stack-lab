@@ -4,8 +4,8 @@ import SelectItem from './SelectItem';
 import styles from './Select.css';
 
 const SelectList = ({ onChange, piList }) => {
-  const options = piList.map(pi => {
-    return <SelectItem key={pi._id} value={pi.piNickname} name={pi.piNickname} />;
+  const options = piList.map((pi, i) => {
+    return <SelectItem key={i} value={pi.piNickname} name={pi.piNickname} />;
   });
 
   return (

@@ -8,43 +8,31 @@ import { get } from '../../../services/request.js';
 
 export default function PiList({ handleSessionSelect }) {
   const user = useSessionUser();
+  
+  const [selectedPiIndex, setSelectedPiIndex] = useState(0);
+  const [sessions, setSessions] = useState([]);
+    
+  useEffect(() => {
+    if(user){
+      fetchSessions();
+    }
+  }, [selectedPiIndex, user]);
 
   if(!user){
     return <h1>Loading</h1>;
   } 
 
-  const [selectedPi, setSelectedPi] = useState(user.myPis[0]);
-  // const [radio, setRadio] = useState('pi2');
-  const [sessions, setSessions] = useState([]);
-
-  
-  useEffect(() => {
-    fetchSessions();
-  }, [selectedPi]);
-
   const fetchSessions = () => {
-    get(`/user-aggregations/nickname/${selectedPi.piNickname}&${user._id}`)
+    get(`/user-aggregations/nickname/${user.myPis[selectedPiIndex].piNickname}&${user._id}`)
       .then(sessions => {
         console.log('fetched sessions', sessions);
         setSessions(sessions);
       });
   };
 
-  //fetchSessions();
-
-  const inputFactoryMethod = {
-    select: setSelectedPi,
-    radio: setSessions
-  };
-
-  // const radios = [
-  //   { label: 'Session 1', value: 'session1' },
-  //   { label: 'Session 2', value: 'session2' },
-  //   { label: 'Session 3', value: 'session3' }
-  // ];
-
   const handlePiChange = ({ target }) => {
-    inputFactoryMethod[target.name](target.value);
+    setSelectedPiIndex(target.key);
+    console.log(target.key);
   };
 
   return (
@@ -56,11 +44,5 @@ export default function PiList({ handleSessionSelect }) {
 }
 
 PiList.propTypes = {
-  user: PropTypes.shape({
-    __v: PropTypes.number.isRequired,
-    _id: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    myPis: PropTypes.array.isRequired,
-    role: PropTypes.string.isRequired
-  }).isRequired
+  handleSessionSelect: PropTypes.func.isRequired
 };
