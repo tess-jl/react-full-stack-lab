@@ -1,3 +1,13 @@
 .DataSessionDetails{
   display: block;
+  padding: 0 0.5rem;
+  h2{
+    margin:0.5rem 0 1rem;
+  }
+  div{
+    p{
+      margin: 0.4rem 0;
+      line-height: 1;
+    }
+  }
 }

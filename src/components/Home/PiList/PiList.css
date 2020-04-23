@@ -1,5 +1,6 @@
 .PiList{
-  background-color: rgba(125, 125, 125, 0.3);
-  padding: 0.5rem 1rem 0 0.5rem;
+  background-color: #A8C8FF;
+  padding: 0.25rem 0.25rem 0;
   margin: 0 1rem 0 0;
+  border: 2px solid #416BB3;
 }
