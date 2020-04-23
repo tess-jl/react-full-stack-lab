@@ -1,17 +1,6 @@
-import { get, post, path, del } from './request.js';
+import { get, post, patch, del } from './request.js';
 
+export const getVerifyAuth = () => get('/auth/verify');
 export const postSignUp = user => post('/auth/signup', user);
-
-
-// export const fetchSignUpUser = (email, password, piNickname) => {
-//   const data = {
-//     email: email,
-//     password: password,
-//     role: 'user',
-//     myPis: [{
-//       piNickname: piNickname
-//     }]
-//   };
-
-// };
+export const postLogin = user => post('/auth/login', user);
 
