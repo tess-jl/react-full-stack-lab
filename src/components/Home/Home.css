@@ -1,0 +1,9 @@
+.Home{
+  display: flex;
+  flex-direction: column;
+}
+
+.Main {
+  display: flex;
+  flex-direction: row;
+}
